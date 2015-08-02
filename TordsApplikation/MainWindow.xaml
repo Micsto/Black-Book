@@ -1,0 +1,68 @@
+﻿<Window x:Class="TordsApplikation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:TordsApplikation.MainViewModel" 
+        xmlns:view="clr-namespace:TordsApplikation.View"
+        mc:Ignorable="d"
+        Title="Black Book" Height="500" Width="525" Icon="Assets/tordsblackbook_icon.png">
+    <!-- Realize that some stuff for example placement in the UI isnt optimal, but since 
+         its just a fun test-project, I cant be bothered fixing it at this time-->
+    <Grid>
+        <Grid.DataContext>
+            <vm:MainWindowViewModel/>
+        </Grid.DataContext>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="87*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="346*"/>
+        </Grid.RowDefinitions>
+        <!-- StackPanels -->
+        <StackPanel Grid.Column="0" Grid.RowSpan="3">
+            <Label Content="Name"></Label>
+            <Label Content="Adress"></Label>
+            <Label Content="Phone"></Label>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.RowSpan="3">
+            <TextBox  Width="122" HorizontalAlignment="Left" Text="{Binding NameString}"></TextBox>
+            <TextBox  Width="122" HorizontalAlignment="Left" Text="{Binding AdressString}" Margin="0,15,0,0"></TextBox>
+            <TextBox  Width="122" HorizontalAlignment="Left" Text="{Binding PhoneString}" Margin="0,15,0,0"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Background="LightGray">
+            <Label Content="Name"/>
+            <Label Content="Adress"/>
+            <Label Content="Phone"/>
+        </StackPanel>
+        <!-- Buttons -->
+        <Button Height="40" Foreground="Azure" 
+                Background="BlueViolet" Content="Add Contact"
+                Grid.Column="1" Grid.Row="0"
+                HorizontalAlignment="Right"
+                Command="{Binding AddPerson}" Margin="0,37,100,10" Width="71"/>
+        <Button Height="40" Foreground="Azure"              
+                Background="BlueViolet" Content="Remove Contacts" 
+                HorizontalAlignment="Right"
+                Grid.Column="1" Grid.Row="0" Margin="0,37,186,10"
+                Command="{Binding RemovePerson}" Width="96"/>
+        <Button Height="40" Foreground="Azure"              
+                Background="BlueViolet" Content="Save Contact" 
+                Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right"
+                Command="{Binding SaveContacts}" Margin="0,37,0,10" Width="91"/>
+        <!-- List Of Persons In your Black Book-->
+        <ListView Grid.Row="2" Grid.Column="1"
+                  ItemsSource="{Binding PersonList}"
+                  SelectedValue="{Binding PersonSelected}"
+                  BorderThickness="0" Margin="0,1,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <view:ucPersonList/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>
