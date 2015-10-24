@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extansions\MyExtansions.cs" />
     <Compile Include="View\ucPersonList.xaml.cs">
       <DependentUpon>ucPersonList.xaml</DependentUpon>
     </Compile>

@@ -29,9 +29,9 @@
             <Label Content="Phone"></Label>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.RowSpan="3">
-            <TextBox  Width="122" HorizontalAlignment="Left" Text="{Binding NameString}"></TextBox>
-            <TextBox  Width="122" HorizontalAlignment="Left" Text="{Binding AdressString}" Margin="0,15,0,0"></TextBox>
-            <TextBox  Width="122" HorizontalAlignment="Left" Text="{Binding PhoneString}" Margin="0,15,0,0"></TextBox>
+            <TextBox  Width="122" HorizontalAlignment="Left" Text="{Binding NewPerson.Name}"></TextBox>
+            <TextBox  Width="122" HorizontalAlignment="Left" Text="{Binding NewPerson.Adress}" Margin="0,15,0,0"></TextBox>
+            <TextBox  Width="122" HorizontalAlignment="Left" Text="{Binding NewPerson.Phone}" Margin="0,15,0,0"></TextBox>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Background="LightGray">
             <Label Content="Name"/>
